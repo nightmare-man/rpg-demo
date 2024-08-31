@@ -34,6 +34,7 @@ public class player : MonoBehaviour
     public playerStateJump playerJump { get; private set; }
     public playerStateAir playerAir { get; private set; }
     public playerStateDash playerDash { get; private set; }
+    public playerStateWallSlide playerWallSlide { get; private set; }
     #endregion
 
     #region components
@@ -48,7 +49,8 @@ public class player : MonoBehaviour
         playerMove  = new playerStateMove(stateMachine, this, "playerMove");
         playerJump  = new playerStateJump(stateMachine, this, "playerJump");
         playerAir   = new playerStateAir(stateMachine, this, "playerJump");
-        playerDash = new playerStateDash(stateMachine, this, "playerDash");
+        playerDash  = new playerStateDash(stateMachine, this, "playerDash");
+        playerWallSlide = new playerStateWallSlide(stateMachine, this, "playerWallSlide");
     }
 
     // Start is called before the first frame update
@@ -88,6 +90,8 @@ public class player : MonoBehaviour
         flipController(xVelocity);
     }
     public bool isGrounded() => Physics2D.Raycast(groundCheckPoint.position, Vector2.down,groundCheckDistance,whatIsGround);
+    public bool isWallDetected() => Physics2D.Raycast(wallCheckPoint.position, Vector2.right * faceDir, wallCheckDistance, whatIsGround);
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheckPoint.position, new Vector3(groundCheckPoint.position.x, groundCheckPoint.position.y - groundCheckDistance));
