@@ -35,6 +35,8 @@ public class player : MonoBehaviour
     public playerStateAir playerAir { get; private set; }
     public playerStateDash playerDash { get; private set; }
     public playerStateWallSlide playerWallSlide { get; private set; }
+    public playerStateWallJump playerStateWallJump { get; private set; }
+    public playerStateAttack playerStateAttack { get; private set; }
     #endregion
 
     #region components
@@ -51,6 +53,8 @@ public class player : MonoBehaviour
         playerAir   = new playerStateAir(stateMachine, this, "playerJump");
         playerDash  = new playerStateDash(stateMachine, this, "playerDash");
         playerWallSlide = new playerStateWallSlide(stateMachine, this, "playerWallSlide");
+        playerStateWallJump = new playerStateWallJump(stateMachine, this, "playerJump");
+        playerStateAttack = new playerStateAttack(stateMachine, this, "playerAttack");
     }
 
     // Start is called before the first frame update
@@ -72,6 +76,10 @@ public class player : MonoBehaviour
 
     private void dashInputCheck()
     {
+        if (isWallDetected())
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             //实现dash瞬间能够修改方向
@@ -113,4 +121,5 @@ public class player : MonoBehaviour
         faceRight = !faceRight;
         transform.Rotate(0, 180, 0);
     }
+    public void AnimationTrigger() => stateMachine.currentState.animatorFinishTrigger();
 }

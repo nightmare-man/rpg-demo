@@ -10,7 +10,7 @@ public class playerState
     protected float xInput;
     protected float yInput;
     protected float stateTime;
-
+    protected bool trigger;
     public playerState(playerStateMachine __stateMachine, player __player, string __animName)
     {
         _stateMachine = __stateMachine;
@@ -22,6 +22,7 @@ public class playerState
     {
         Debug.Log("enter " + _animName);
         _player.anim.SetBool(_animName, true);
+        trigger = true;
         
     }
     public virtual void exit()
@@ -36,5 +37,9 @@ public class playerState
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
         _player.anim.SetFloat("yVelocity", _player.rb.velocity.y);
+    }
+    public virtual void animatorFinishTrigger()
+    {
+        trigger = false;
     }
 }

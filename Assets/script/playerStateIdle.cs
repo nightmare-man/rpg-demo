@@ -11,6 +11,7 @@ public class playerStateIdle : playerStateGround
     public override void enter()
     {
         base.enter();
+        _player.rb.velocity = new Vector2(0, 0);
     }
     public override void exit()
     {

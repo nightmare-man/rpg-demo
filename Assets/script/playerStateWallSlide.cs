@@ -21,6 +21,11 @@ public class playerStateWallSlide : playerState
     public override void update()
     {
         base.update();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _stateMachine.changeState(_player.playerStateWallJump);
+            return;
+        }
         if (xInput != 0)
         {
             if (xInput != _player.faceDir)

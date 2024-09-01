@@ -22,7 +22,10 @@ public class playerStateGround : playerState
     {
         base.update();
         //µøÂä
-        
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            _stateMachine.changeState(_player.playerStateAttack);
+        }
         if (!_player.isGrounded())
         {
             _stateMachine.changeState(_player.playerAir);
