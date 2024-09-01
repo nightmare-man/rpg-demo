@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerStateAttack : playerState
+public class playerStatePrimaryAttack : playerState
 {
     private float lastAttackTime;
     private float comboWindow = 2.0f;
     private int comboCounter = 0;
-    public playerStateAttack(playerStateMachine __stateMachine, player __player, string __animName) : base(__stateMachine, __player, __animName)
+    public playerStatePrimaryAttack(playerStateMachine __stateMachine, player __player, string __animName) : base(__stateMachine, __player, __animName)
     {
     }
 
@@ -18,7 +18,15 @@ public class playerStateAttack : playerState
         if (comboCounter > 2 || Time.time - lastAttackTime > comboWindow)
             comboCounter = 0;
         _player.anim.SetInteger("comboCounter", comboCounter);
-        _player.setVelocity(_player.faceDir * _player.attackMovement[comboCounter], _player.rb.velocity.y);
+
+        #region choose attack direction
+        float attackDir = _player.faceDir;
+        if (xInput != 0)
+            attackDir = xInput;
+
+        #endregion
+
+        _player.setVelocity(attackDir * _player.attackMovement[comboCounter], _player.rb.velocity.y);
         stateTime = 0.1f;
 
         

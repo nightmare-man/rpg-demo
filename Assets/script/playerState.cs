@@ -6,7 +6,7 @@ public class playerState
 {
     protected playerStateMachine _stateMachine { get; private set; }
     protected player _player { get; private set; }
-    private string _animName;
+    public string _animName { get; private set; }
     protected float xInput;
     protected float yInput;
     protected float stateTime;
@@ -20,7 +20,6 @@ public class playerState
 
     public virtual void enter()
     {
-        Debug.Log("enter " + _animName);
         _player.anim.SetBool(_animName, true);
         trigger = true;
         

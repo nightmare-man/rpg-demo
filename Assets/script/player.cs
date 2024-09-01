@@ -40,7 +40,7 @@ public class player : MonoBehaviour
     public playerStateDash playerDash { get; private set; }
     public playerStateWallSlide playerWallSlide { get; private set; }
     public playerStateWallJump playerStateWallJump { get; private set; }
-    public playerStateAttack playerStateAttack { get; private set; }
+    public playerStatePrimaryAttack playerStateAttack { get; private set; }
     #endregion
 
     #region components
@@ -58,7 +58,7 @@ public class player : MonoBehaviour
         playerDash  = new playerStateDash(stateMachine, this, "playerDash");
         playerWallSlide = new playerStateWallSlide(stateMachine, this, "playerWallSlide");
         playerStateWallJump = new playerStateWallJump(stateMachine, this, "playerJump");
-        playerStateAttack = new playerStateAttack(stateMachine, this, "playerAttack");
+        playerStateAttack = new playerStatePrimaryAttack(stateMachine, this, "playerAttack");
     }
 
     // Start is called before the first frame update
