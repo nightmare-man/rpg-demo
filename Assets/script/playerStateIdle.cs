@@ -11,7 +11,7 @@ public class playerStateIdle : playerStateGround
     public override void enter()
     {
         base.enter();
-        _player.rb.velocity = new Vector2(0, 0);
+        _player.zeroVelocity();
     }
     public override void exit()
     {
@@ -20,7 +20,7 @@ public class playerStateIdle : playerStateGround
     public override void update()
     {
         base.update();
-        if (xInput != 0)
+        if (xInput != 0&& !_player.isBusy)
         {
             _stateMachine.changeState(_player.playerMove);
         }

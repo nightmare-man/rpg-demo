@@ -8,6 +8,10 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class player : MonoBehaviour
 {
 
+    [Header("attack movement")]
+    public float[] attackMovement;
+    public bool isBusy { get; private set; }
+
     [Header("move info")]
     public float moveSpeed = 8.0f;
     public float jumpForce = 8.0f;
@@ -91,7 +95,13 @@ public class player : MonoBehaviour
             stateMachine.changeState(playerDash);
         }
     }
-
+    public IEnumerator busyFor(float _seconds)
+    {
+        isBusy = true;
+        yield return new WaitForSeconds(_seconds);
+        isBusy = false;
+    }
+    public void zeroVelocity() => rb.velocity = new Vector2(0, 0);
     public void setVelocity(float xVelocity, float yVelocity)
     {
         rb.velocity = new Vector2(xVelocity, yVelocity);
