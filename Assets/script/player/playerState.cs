@@ -7,10 +7,10 @@ public class playerState
     protected playerStateMachine _stateMachine { get; private set; }
     protected player _player { get; private set; }
     public string _animName { get; private set; }
-    protected float xInput;
-    protected float yInput;
+    protected float xInput { get; private set; }
+    protected float yInput { get; private set; }
     protected float stateTime;
-    protected bool trigger;
+    protected bool trigger { get; private set; }
     public playerState(playerStateMachine __stateMachine, player __player, string __animName)
     {
         _stateMachine = __stateMachine;

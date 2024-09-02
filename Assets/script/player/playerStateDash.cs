@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerStateDash : playerState
 {
+  
     public playerStateDash(playerStateMachine __stateMachine, player __player, string __animName) : base(__stateMachine, __player, __animName)
     {
     }
