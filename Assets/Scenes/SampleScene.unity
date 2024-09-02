@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88828879}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,8 +164,8 @@ GameObject:
   - component: {fileID: 342893410}
   - component: {fileID: 342893412}
   - component: {fileID: 342893411}
-  - component: {fileID: 342893413}
-  m_Layer: 0
+  - component: {fileID: 342893414}
+  m_Layer: 6
   m_Name: animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &342893413
+--- !u!114 &342893414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 342893409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c55ba5f007d5a8c47a78583b8334e575, type: 3}
+  m_Script: {fileID: 11500000, guid: ffc599d040727e8429064d48b5ad82e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &382382576
@@ -2746,7 +2746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 772082190}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2777,7 +2777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 776764672}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2793,7 +2793,7 @@ Transform:
   m_GameObject: {fileID: 776764671}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.314, y: 0, z: 0}
+  m_LocalPosition: {x: 0.436, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2810,7 +2810,8 @@ GameObject:
   - component: {fileID: 784058403}
   - component: {fileID: 784058402}
   - component: {fileID: 784058404}
-  m_Layer: 0
+  - component: {fileID: 784058405}
+  m_Layer: 7
   m_Name: animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2905,6 +2906,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &784058405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784058401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4fe5f0c384d88e4c9d02d56d7eee3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &835919360
 GameObject:
   m_ObjectHideFlags: 0
@@ -3149,7 +3162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1271280196}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3216,7 +3229,7 @@ GameObject:
   - component: {fileID: 1531948315}
   - component: {fileID: 1531948318}
   - component: {fileID: 1531948317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3512,7 +3525,7 @@ GameObject:
   - component: {fileID: 1864349665}
   - component: {fileID: 1864349667}
   - component: {fileID: 1864349666}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3558,6 +3571,12 @@ MonoBehaviour:
     m_Bits: 8
   moveSpeed: 1.5
   idleTime: 1
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  attackDistance: 1.02
+  attackCoolDown: 0.5
+  lastAttackTime: 0
 --- !u!70 &1864349666
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

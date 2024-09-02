@@ -8,6 +8,7 @@ public class skeletonEnemy : enemy
     public skeletonStateIdle idle;
     public skeletonStateMove move;
     public skeletonStateBattle battle;
+    public skeletonStateAttack attack;
     #endregion
 
     protected override void Awake()
@@ -22,6 +23,7 @@ public class skeletonEnemy : enemy
         move = new skeletonStateMove(this, this, stateMachine, "move");
         //虽然是battle状态，但实际表现就是追踪玩家，因此动画表现还是move
         battle = new skeletonStateBattle(this, this, stateMachine, "move");
+        attack = new skeletonStateAttack(this, this, stateMachine, "attack");
         stateMachine.initialize(idle);
     }
 

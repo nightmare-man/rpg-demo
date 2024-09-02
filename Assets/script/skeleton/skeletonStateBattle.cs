@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class skeletonStateBattle : enemyState
@@ -30,9 +31,12 @@ public class skeletonStateBattle : enemyState
         {
             if (_skeletonEnemy.isPlayerDetected().distance< _skeletonEnemy.attackDistance)
             {
-                Debug.Log("need attack");
-                _skeletonEnemy.zeroVelocity();
-                return;
+                if (canAttack())
+                {
+                    
+                    _stateMachine.changeState(_skeletonEnemy.attack);
+                    return;
+                }
             }
         }
         if (player.transform.position.x > _skeletonEnemy.rb.position.x)
@@ -45,5 +49,16 @@ public class skeletonStateBattle : enemyState
         }
         _skeletonEnemy.setVelocity(_skeletonEnemy.moveSpeed * moveDir, _skeletonEnemy.rb.velocity.y);
        
+    }
+    private bool canAttack()
+    {
+        if (Time.time - _skeletonEnemy.lastAttackTime > _skeletonEnemy.attackCoolDown)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

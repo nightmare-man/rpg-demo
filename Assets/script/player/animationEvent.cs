@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class animationEvent : MonoBehaviour
+public class AnimationEvent : MonoBehaviour
 {
     private player _player;
     void Start()
