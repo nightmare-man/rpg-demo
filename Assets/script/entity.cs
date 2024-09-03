@@ -12,8 +12,10 @@ public class entity : MonoBehaviour
     [Header("collision info")]
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private Transform wallCheckPoint;
+    [SerializeField] public Transform attackCheckPoint;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float wallCheckDistance;
+    [SerializeField] public float attackCheckDistance;
     [SerializeField] private LayerMask whatIsGround;
     #endregion
 
@@ -53,7 +55,10 @@ public class entity : MonoBehaviour
         faceRight = !faceRight;
         transform.Rotate(0, 180, 0);
     }
-
+    public virtual void OnDamage()
+    {
+        Debug.Log(gameObject.name + " was damaged");
+    }
     public void zeroVelocity() => rb.velocity = new Vector2(0, 0);
     public void setVelocity(float xVelocity, float yVelocity)
     {
@@ -67,5 +72,6 @@ public class entity : MonoBehaviour
     {
         Gizmos.DrawLine(groundCheckPoint.position, new Vector3(groundCheckPoint.position.x, groundCheckPoint.position.y - groundCheckDistance));
         Gizmos.DrawLine(wallCheckPoint.position, new Vector3(wallCheckPoint.position.x + wallCheckDistance, wallCheckPoint.position.y));
+        Gizmos.DrawWireSphere(attackCheckPoint.position, attackCheckDistance);
     }
 }

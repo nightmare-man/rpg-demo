@@ -14,7 +14,17 @@ public class AnimationEvent : MonoBehaviour
     {
         _player.AnimationTrigger();
     }
-
+    public void attackTrigger()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(_player.attackCheckPoint.position, _player.attackCheckDistance);
+        foreach(var hit in colliders)
+        {
+            if (hit.GetComponent<enemy>() != null)
+            {
+                hit.GetComponent<enemy>().OnDamage();
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {

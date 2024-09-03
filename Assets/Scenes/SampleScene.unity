@@ -122,6 +122,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &65959732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 65959733}
+  m_Layer: 6
+  m_Name: attackCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &65959733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65959732}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1531948316}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &88828878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,7 +2348,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.2619998, z: -10}
+  m_LocalPosition: {x: -11.321547, y: -2.2619998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2730,7 +2761,7 @@ Transform:
   m_GameObject: {fileID: 589754125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.2619998, z: -10}
+  m_LocalPosition: {x: -11.321547, y: -2.2619998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3250,8 +3281,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckPoint: {fileID: 772082190}
   wallCheckPoint: {fileID: 1271280196}
+  attackCheckPoint: {fileID: 65959733}
   groundCheckDistance: 0.3
   wallCheckDistance: 0.36
+  attackCheckDistance: 1.29
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -3274,13 +3307,14 @@ Transform:
   m_GameObject: {fileID: 1531948314}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.4, z: 0}
+  m_LocalPosition: {x: -13.38, y: -5.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 342893410}
   - {fileID: 772082190}
   - {fileID: 1271280196}
+  - {fileID: 65959733}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1531948317
@@ -3429,6 +3463,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1691808493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1691808494}
+  m_Layer: 7
+  m_Name: attackCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1691808494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691808493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1864349664}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786742074
 GameObject:
   m_ObjectHideFlags: 0
@@ -3541,13 +3606,14 @@ Transform:
   m_GameObject: {fileID: 1864349663}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.6, y: -5.02, z: -1.0633627}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -9.68, y: -5.38, z: -1.0633627}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 784058403}
   - {fileID: 88828879}
   - {fileID: 776764672}
+  - {fileID: 1691808494}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1864349665
@@ -3564,8 +3630,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckPoint: {fileID: 88828879}
   wallCheckPoint: {fileID: 776764672}
+  attackCheckPoint: {fileID: 0}
   groundCheckDistance: 0.17
   wallCheckDistance: 0.18
+  attackCheckDistance: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -3576,6 +3644,8 @@ MonoBehaviour:
     m_Bits: 64
   attackDistance: 1.02
   attackCoolDown: 0.5
+  continusbattleTime: 2.96
+  continusbattleDistance: 8.51
   lastAttackTime: 0
 --- !u!70 &1864349666
 CapsuleCollider2D:

@@ -11,7 +11,17 @@ public class enemyAnimationEvent : MonoBehaviour
     {
         _enemy = GetComponentInParent<enemy>();
     }
-
+    public void attackTrigger()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(_enemy.attackCheckPoint.position, _enemy.attackCheckDistance);
+        foreach(var hit in colliders)
+        {
+            if (hit.GetComponent<player>() != null)
+            {
+                hit.GetComponent<player>().OnDamage();
+            }
+        }
+    }
     public void FinishTrigger()
     {
         _enemy.animationFinishTrigger();
