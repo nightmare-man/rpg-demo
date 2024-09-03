@@ -5,6 +5,7 @@ using UnityEngine;
 public class skeletonStateGround : enemyState
 {
     protected skeletonEnemy _skeletonEnemy;
+    private GameObject player;
     public skeletonStateGround(enemy __enemy,skeletonEnemy __skeletonEnemy, enemyStateMachine __stateMachine, string __animName) : base(__enemy, __stateMachine, __animName)
     {
         _skeletonEnemy = __skeletonEnemy;
@@ -13,6 +14,7 @@ public class skeletonStateGround : enemyState
     public override void enter()
     {
         base.enter();
+        player = GameObject.Find("player");
     }
 
     public override void exit()
@@ -23,7 +25,7 @@ public class skeletonStateGround : enemyState
     public override void update()
     {
         base.update();
-        if (_skeletonEnemy.isPlayerDetected())
+        if (_skeletonEnemy.isPlayerDetected()|| Vector2.Distance(player.transform.position,_skeletonEnemy.transform.position)<2)
         {
             _stateMachine.changeState(_skeletonEnemy.battle);
         }

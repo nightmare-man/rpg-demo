@@ -17,11 +17,13 @@ public class skeletonStateBattle : enemyState
     {
         base.enter();
         player = GameObject.Find("player");
+        Debug.Log("battle");
     }
 
     public override void exit()
     {
         base.exit();
+        Debug.Log("exit battle");
     }
 
     public override void update()
@@ -29,6 +31,8 @@ public class skeletonStateBattle : enemyState
         base.update();
         if (_skeletonEnemy.isPlayerDetected())
         {
+            //如果一直能检测到玩家，就一直重置追逐时间
+            stateTime = _skeletonEnemy.continusbattleTime;
             if (_skeletonEnemy.isPlayerDetected().distance< _skeletonEnemy.attackDistance)
             {
                 if (canAttack())
@@ -37,6 +41,13 @@ public class skeletonStateBattle : enemyState
                     _stateMachine.changeState(_skeletonEnemy.attack);
                     return;
                 }
+            }
+        }
+        else
+        {
+            if (stateTime < 0 || Vector2.Distance(_skeletonEnemy.transform.position,player.transform.position)>_skeletonEnemy.continusbattleDistance)
+            {
+                _stateMachine.changeState(_skeletonEnemy.idle);
             }
         }
         if (player.transform.position.x > _skeletonEnemy.rb.position.x)

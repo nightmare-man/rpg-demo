@@ -12,6 +12,8 @@ public class enemy : entity
     public LayerMask whatIsPlayer;
     public float attackDistance;
     public float attackCoolDown;
+    public float continusbattleTime;
+    public float continusbattleDistance;
     [HideInInspector] public float lastAttackTime;
 
     public enemyStateMachine stateMachine;
