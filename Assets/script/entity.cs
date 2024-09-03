@@ -22,6 +22,7 @@ public class entity : MonoBehaviour
     #region components
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
+    private entityFlash ef;
     #endregion
 
     protected virtual void Awake()
@@ -32,6 +33,7 @@ public class entity : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        ef = GetComponent<entityFlash>();
     }
 
     protected virtual void Update()
@@ -57,7 +59,7 @@ public class entity : MonoBehaviour
     }
     public virtual void OnDamage()
     {
-        Debug.Log(gameObject.name + " was damaged");
+        ef.StartCoroutine("fx");
     }
     public void zeroVelocity() => rb.velocity = new Vector2(0, 0);
     public void setVelocity(float xVelocity, float yVelocity)
