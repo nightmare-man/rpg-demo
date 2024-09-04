@@ -9,6 +9,7 @@ public class skeletonEnemy : enemy
     public skeletonStateMove move;
     public skeletonStateBattle battle;
     public skeletonStateAttack attack;
+    public skeletonStateStunned stunned;
     #endregion
 
     protected override void Awake()
@@ -24,11 +25,16 @@ public class skeletonEnemy : enemy
         //虽然是battle状态，但实际表现就是追踪玩家，因此动画表现还是move
         battle = new skeletonStateBattle(this, this, stateMachine, "move");
         attack = new skeletonStateAttack(this, this, stateMachine, "attack");
+        stunned = new skeletonStateStunned(this, this, stateMachine, "stunned");
         stateMachine.initialize(idle);
     }
 
     protected override void Update()
     {
         base.Update();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            stateMachine.changeState(stunned);
+        }
     }
 }

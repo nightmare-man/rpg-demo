@@ -3289,6 +3289,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  knockBackDirection: {x: 0, y: 0}
+  knockDuration: 0
   attackMovement:
   - 2
   - 1
@@ -3653,8 +3655,12 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  knockBackDirection: {x: 6, y: 12}
+  knockDuration: 0.7
   moveSpeed: 1.5
   idleTime: 1
+  stunnedDuration: 1
+  stunnedDirection: {x: 9, y: 12}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -3713,7 +3719,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 12
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

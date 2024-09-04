@@ -29,7 +29,7 @@ public class entity : MonoBehaviour
     #region components
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
-    private entityFlash ef;
+    public entityFlash ef { get; private set; }
     #endregion
 
     protected virtual void Awake()

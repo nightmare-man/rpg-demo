@@ -8,6 +8,11 @@ public class enemy : entity
     [SerializeField] public float moveSpeed;
     [SerializeField] public float idleTime;
 
+    [Header("stunned info")]
+    [SerializeField] public float stunnedDuration;
+    [SerializeField] public Vector2 stunnedDirection;
+
+
     [Header("battle info")]
     public LayerMask whatIsPlayer;
     public float attackDistance;

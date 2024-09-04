@@ -20,4 +20,15 @@ public class entityFlash : MonoBehaviour
         yield return new WaitForSeconds(flashTime);
         sr.material = origin;
     }
+    private void blinkColor() {
+        if (sr.color != Color.white)
+            sr.color = Color.white;
+        else
+            sr.color = Color.red;
+    }
+    private void cancelBlink()
+    {
+        CancelInvoke();
+        sr.color = Color.white;
+    }
 }
