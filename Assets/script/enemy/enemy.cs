@@ -9,9 +9,10 @@ public class enemy : entity
     [SerializeField] public float idleTime;
 
     [Header("stunned info")]
-    [SerializeField] public float stunnedDuration;
-    [SerializeField] public Vector2 stunnedDirection;
-
+    public float stunnedDuration;
+    public Vector2 stunnedDirection;
+    private bool _canBeStunned;
+    [SerializeField] private GameObject counterAttackWindow;
 
     [Header("battle info")]
     public LayerMask whatIsPlayer;
@@ -39,6 +40,29 @@ public class enemy : entity
     {
         base.Update();
         stateMachine.currentState.update();
+    }
+    public void OpenStunnedWindow()
+    {
+        _canBeStunned  = true;
+        counterAttackWindow.SetActive(true);
+    }
+    public void CloseStunnedWindow()
+    {
+        _canBeStunned = false;
+        counterAttackWindow.SetActive(false);
+    }
+    
+    public virtual bool attemptTpStunned()
+    {
+        if (_canBeStunned)
+        {
+            CloseStunnedWindow();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     protected override void OnDrawGizmos()
     {

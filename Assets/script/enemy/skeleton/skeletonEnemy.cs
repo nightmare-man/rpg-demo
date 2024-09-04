@@ -37,4 +37,17 @@ public class skeletonEnemy : enemy
             stateMachine.changeState(stunned);
         }
     }
+    /// <summary>
+    /// 检查是否能够stunned,能的话就进入stunned状态
+    /// </summary>
+    /// <returns></returns>
+    public override bool attemptTpStunned()
+    {
+        if (base.attemptTpStunned())
+        {
+            stateMachine.changeState(stunned);
+            return true;
+        }
+        return false;
+    }
 }

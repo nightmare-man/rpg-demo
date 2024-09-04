@@ -26,6 +26,14 @@ public class enemyAnimationEvent : MonoBehaviour
     {
         _enemy.animationFinishTrigger();
     }
+    public void OpenStunnedWindow()
+    {
+        _enemy.OpenStunnedWindow();
+    }
+    public void CloseStunnedWinodow()
+    {
+        _enemy.CloseStunnedWindow();
+    }
     // Update is called once per frame
     void Update()
     {
