@@ -5,7 +5,8 @@ using UnityEngine;
 public class skillManager : MonoBehaviour
 {
     public static skillManager instance;
-    [HideInInspector] public dashSkill dashSkill;
+    [HideInInspector] public dashSkill dashSkill { get; private set; }
+    [HideInInspector] public cloneSkill cloneSkill { get; private set; }
     private void Awake()
     {
         if (instance != null)
@@ -16,5 +17,6 @@ public class skillManager : MonoBehaviour
     private void Start()
     {
         dashSkill = GetComponent<dashSkill>();
+        cloneSkill = GetComponent<cloneSkill>();
     }
 }

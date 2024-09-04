@@ -13,6 +13,7 @@ public class playerStateDash : playerState
     {
         base.enter();
         stateTime = _player.dashTime;
+        skillManager.instance.cloneSkill.setClone(_player.transform);
        
     }
 

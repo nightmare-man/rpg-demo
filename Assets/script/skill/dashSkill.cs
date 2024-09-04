@@ -7,6 +7,6 @@ public class dashSkill : baseSkill
     protected override void useSkill()
     {
         base.useSkill();
-        Debug.Log("leave a clone behind");
+       
     }
 }
