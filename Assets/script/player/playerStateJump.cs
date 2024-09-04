@@ -11,7 +11,6 @@ public class playerStateJump : playerState
     public override void enter()
     {
         base.enter();
-        Debug.Log("x velocity is " + _player.rb.velocity.x + " when jump");
         _player.setVelocity(_player.rb.velocity.x,_player.jumpForce);
     }
 

@@ -19,6 +19,13 @@ public class entity : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     #endregion
 
+    #region knock info
+    [Header("knock info")]
+    [SerializeField] private Vector2 knockBackDirection;
+    [SerializeField] private float knockDuration;
+    private bool knocked;
+    #endregion
+
     #region components
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
@@ -42,11 +49,11 @@ public class entity : MonoBehaviour
     }
     public virtual void flipController(float _x)
     {
-        if (_x > 0.00001 && !faceRight)
+        if (_x > 0.001 && !faceRight)
         {
             flip();
         }
-        else if (_x < -0.00001 && faceRight)
+        else if (_x < -0.001 && faceRight)
         {
             flip();
         }
@@ -60,12 +67,24 @@ public class entity : MonoBehaviour
     public virtual void OnDamage()
     {
         ef.StartCoroutine("fx");
+        StartCoroutine("onKnockBack");
+    }
+
+    private IEnumerator onKnockBack()
+    {
+        knocked = true;
+        rb.velocity=new Vector2(-faceDir * knockBackDirection.x, knockBackDirection.y);
+        yield return new WaitForSeconds(knockDuration);
+        knocked = false;
+        zeroVelocity();
     }
     public void zeroVelocity() {
         setVelocity(0, 0);
     } 
     public void setVelocity(float xVelocity, float yVelocity)
     {
+        if (knocked)
+            return;
         rb.velocity = new Vector2(xVelocity, yVelocity);
         flipController(xVelocity);
     }

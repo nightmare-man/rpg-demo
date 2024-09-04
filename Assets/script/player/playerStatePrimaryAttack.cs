@@ -21,8 +21,10 @@ public class playerStatePrimaryAttack : playerState
 
         #region choose attack direction
         float attackDir = _player.faceDir;
-        if (xInput != 0)
-            attackDir = xInput;
+        
+       // if (xInput != 0)
+         //   attackDir = xInput;
+            //这里不用xInput是因为这里的xInput拿到了错误的结果
 
         #endregion
 
