@@ -24,7 +24,11 @@ public class playerStateGround : playerState
         //µøÂä
         if (Input.GetKeyDown(KeyCode.J))
         {
-            _stateMachine.changeState(_player.playerStateAttack);
+            _stateMachine.changeState(_player.playerPrimaryAttack);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            _stateMachine.changeState(_player.playerCounterAttack);
         }
         if (!_player.isGrounded())
         {

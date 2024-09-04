@@ -49,7 +49,7 @@ public class playerStatePrimaryAttack : playerState
         {
             _player.zeroVelocity();
         }
-        if (!trigger)
+        if (trigger)
         {
             _stateMachine.changeState(_player.playerIdle);
         }

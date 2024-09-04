@@ -23,7 +23,7 @@ public class playerStateWallSlide : playerState
         base.update();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _stateMachine.changeState(_player.playerStateWallJump);
+            _stateMachine.changeState(_player.playerWallJump);
             return;
         }
         if (xInput != 0)

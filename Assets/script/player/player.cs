@@ -23,7 +23,9 @@ public class player : entity
     public float dashDir = 1.0f;
     public float dashCoolDown = 2.0f;
     private float lastDashTime;
-    
+
+    [Header("counter attack info")]
+    public float counterAttackDuration = 0.2f;
 
     #region states
     public playerStateMachine stateMachine { get; private set; }
@@ -33,8 +35,9 @@ public class player : entity
     public playerStateAir playerAir { get; private set; }
     public playerStateDash playerDash { get; private set; }
     public playerStateWallSlide playerWallSlide { get; private set; }
-    public playerStateWallJump playerStateWallJump { get; private set; }
-    public playerStatePrimaryAttack playerStateAttack { get; private set; }
+    public playerStateWallJump playerWallJump { get; private set; }
+    public playerStatePrimaryAttack playerPrimaryAttack { get; private set; }
+    public playerStateCounterAttack playerCounterAttack { get; private set; }
     #endregion
 
     
@@ -49,8 +52,9 @@ public class player : entity
         playerAir   = new playerStateAir(stateMachine, this, "playerJump");
         playerDash  = new playerStateDash(stateMachine, this, "playerDash");
         playerWallSlide = new playerStateWallSlide(stateMachine, this, "playerWallSlide");
-        playerStateWallJump = new playerStateWallJump(stateMachine, this, "playerJump");
-        playerStateAttack = new playerStatePrimaryAttack(stateMachine, this, "playerAttack");
+        playerWallJump = new playerStateWallJump(stateMachine, this, "playerJump");
+        playerPrimaryAttack = new playerStatePrimaryAttack(stateMachine, this, "playerAttack");
+        playerCounterAttack = new playerStateCounterAttack(stateMachine, this, "playerCounterAttack");
     }
 
     // Start is called before the first frame update

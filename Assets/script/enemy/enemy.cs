@@ -11,7 +11,7 @@ public class enemy : entity
     [Header("stunned info")]
     public float stunnedDuration;
     public Vector2 stunnedDirection;
-    private bool _canBeStunned;
+    private bool _canBeStunned=false;
     [SerializeField] private GameObject counterAttackWindow;
 
     [Header("battle info")]

@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 47521376}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 0.2888, z: 0.7595448}
+  m_LocalPosition: {x: -0.02, y: 0.2888, z: 0.7595448}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2432,7 +2432,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.321547, y: -2.2619998, z: -10}
+  m_LocalPosition: {x: -12.033885, y: -2.2619998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2845,7 +2845,7 @@ Transform:
   m_GameObject: {fileID: 589754125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.321547, y: -2.2619998, z: -10}
+  m_LocalPosition: {x: -12.033885, y: -2.2619998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3385,6 +3385,7 @@ MonoBehaviour:
   dashSpeed: 16
   dashDir: 1
   dashCoolDown: 2
+  counterAttackDuration: 1
 --- !u!4 &1531948316
 Transform:
   m_ObjectHideFlags: 0
@@ -3740,12 +3741,12 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
-  knockBackDirection: {x: 6, y: 12}
+  knockBackDirection: {x: 5, y: 12}
   knockDuration: 0.7
   moveSpeed: 1.5
   idleTime: 1
   stunnedDuration: 1
-  stunnedDirection: {x: 7, y: 12}
+  stunnedDirection: {x: 8, y: 12}
   counterAttackWindow: {fileID: 47521376}
   whatIsPlayer:
     serializedVersion: 2

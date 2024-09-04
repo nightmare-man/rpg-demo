@@ -21,7 +21,7 @@ public class playerState
     public virtual void enter()
     {
         _player.anim.SetBool(_animName, true);
-        trigger = true;
+        trigger = false;
         
     }
     public virtual void exit()
@@ -39,6 +39,6 @@ public class playerState
     }
     public virtual void animatorFinishTrigger()
     {
-        trigger = false;
+        trigger = true;
     }
 }
