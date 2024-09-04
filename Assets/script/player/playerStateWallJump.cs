@@ -23,15 +23,12 @@ public class playerStateWallJump : playerState
     public override void update()
     {
         base.update();
-        if (stateTime < 0) {
+        //如果高度比较矮，不到1s就着地了，需要从walljump改成idle
+        
+        if (_player.rb.velocity.y < 0)
+        {
             _stateMachine.changeState(_player.playerAir);
         }
 
-        //如果高度比较矮，不到1s就着地了，需要从walljump改成idle
-        if (_player.isGrounded())
-        {
-        
-            _stateMachine.changeState(_player.playerIdle);
-        }
     }
 }

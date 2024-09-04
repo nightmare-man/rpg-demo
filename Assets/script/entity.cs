@@ -42,11 +42,11 @@ public class entity : MonoBehaviour
     }
     public virtual void flipController(float _x)
     {
-        if (_x > 0 && !faceRight)
+        if (_x > 0.00001 && !faceRight)
         {
             flip();
         }
-        else if (_x < 0 && faceRight)
+        else if (_x < -0.00001 && faceRight)
         {
             flip();
         }
@@ -61,7 +61,9 @@ public class entity : MonoBehaviour
     {
         ef.StartCoroutine("fx");
     }
-    public void zeroVelocity() => rb.velocity = new Vector2(0, 0);
+    public void zeroVelocity() {
+        setVelocity(0, 0);
+    } 
     public void setVelocity(float xVelocity, float yVelocity)
     {
         rb.velocity = new Vector2(xVelocity, yVelocity);

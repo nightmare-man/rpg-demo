@@ -39,8 +39,9 @@ public class skeletonStateBattle : enemyState
                 {
                     
                     _stateMachine.changeState(_skeletonEnemy.attack);
-                    return;
+                   
                 }
+                return;
             }
         }
         else

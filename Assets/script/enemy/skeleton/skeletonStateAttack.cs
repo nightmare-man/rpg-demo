@@ -24,6 +24,7 @@ public class skeletonStateAttack : enemyState
     public override void update()
     {
         base.update();
+        _skeletonEnemy.zeroVelocity();
         if (_animTrigger)
         {
             _stateMachine.changeState(_skeletonEnemy.battle);
