@@ -21,8 +21,7 @@ public class player : entity
     public float dashTime = 0.3f;
     public float dashSpeed = 18.0f;
     public float dashDir = 1.0f;
-    public float dashCoolDown = 2.0f;
-    private float lastDashTime;
+   
 
     [Header("counter attack info")]
     public float counterAttackDuration = 0.2f;
@@ -80,7 +79,7 @@ public class player : entity
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && (Time.time-lastDashTime>dashCoolDown))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && skillManager.instance.dashSkill.attemptToUse())
         {
             //实现dash瞬间能够修改方向
             dashDir = Input.GetAxisRaw("Horizontal");
@@ -89,7 +88,7 @@ public class player : entity
             //这里不需要因为dash方向和face方向不同而手动flip
             //因为dash的update里调用了setVelocity
             stateMachine.changeState(playerDash);
-            lastDashTime = Time.time;
+            
         }
     }
     public IEnumerator busyFor(float _seconds)

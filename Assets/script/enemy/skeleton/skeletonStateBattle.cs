@@ -7,7 +7,7 @@ public class skeletonStateBattle : enemyState
 {
     private skeletonEnemy _skeletonEnemy;
     private float moveDir;
-    private GameObject player;
+    private player player;
     public skeletonStateBattle(enemy __enemy, skeletonEnemy __skeletonEnemy, enemyStateMachine __stateMachine, string __animName) : base(__enemy, __stateMachine, __animName)
     {
         _skeletonEnemy = __skeletonEnemy; 
@@ -16,7 +16,7 @@ public class skeletonStateBattle : enemyState
     public override void enter()
     {
         base.enter();
-        player = GameObject.Find("player");
+        player = playerManager.instance.player;
         Debug.Log("battle");
     }
 

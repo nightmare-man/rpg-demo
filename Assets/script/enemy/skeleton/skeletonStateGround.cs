@@ -5,7 +5,7 @@ using UnityEngine;
 public class skeletonStateGround : enemyState
 {
     protected skeletonEnemy _skeletonEnemy;
-    private GameObject player;
+    private player player;
     public skeletonStateGround(enemy __enemy,skeletonEnemy __skeletonEnemy, enemyStateMachine __stateMachine, string __animName) : base(__enemy, __stateMachine, __animName)
     {
         _skeletonEnemy = __skeletonEnemy;
@@ -14,7 +14,7 @@ public class skeletonStateGround : enemyState
     public override void enter()
     {
         base.enter();
-        player = GameObject.Find("player");
+        player = playerManager.instance.player;
     }
 
     public override void exit()
