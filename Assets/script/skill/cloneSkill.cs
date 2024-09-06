@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class cloneSkill : baseSkill
 {
-    public GameObject clonePrefab;
-    public void setClone(Transform transform)
+    [SerializeField] private GameObject clonePrefab;
+    [SerializeField] private bool canAttack;
+
+    public void setClone(Transform _transform)
     {
         GameObject clone = Instantiate(clonePrefab);
-        clone.transform.position = transform.position;
+        clone.GetComponentInChildren<clonePlayerController>().setup(_transform, canAttack);
     }
 
 }
