@@ -37,6 +37,8 @@ public class player : entity
     public playerStateWallJump playerWallJump { get; private set; }
     public playerStatePrimaryAttack playerPrimaryAttack { get; private set; }
     public playerStateCounterAttack playerCounterAttack { get; private set; }
+    public playerStateAimSword playerAimSword { get; private set; }
+    public playerStateCatchSword playerCatchSword { get; private set; }
     #endregion
 
     
@@ -54,6 +56,8 @@ public class player : entity
         playerWallJump = new playerStateWallJump(stateMachine, this, "playerJump");
         playerPrimaryAttack = new playerStatePrimaryAttack(stateMachine, this, "playerAttack");
         playerCounterAttack = new playerStateCounterAttack(stateMachine, this, "playerCounterAttack");
+        playerAimSword = new playerStateAimSword(stateMachine, this, "playerAimSword");
+        playerCatchSword = new playerStateCatchSword(stateMachine, this, "playerCatchSword");
     }
 
     // Start is called before the first frame update
