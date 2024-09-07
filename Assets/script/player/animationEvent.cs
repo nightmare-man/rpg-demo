@@ -10,11 +10,11 @@ public class AnimationEvent : MonoBehaviour
         _player = GetComponentInParent<player>();
     }
 
-    public void animatorTrigger()
+    private void animatorTrigger()
     {
         _player.AnimationTrigger();
     }
-    public void attackTrigger()
+    private void attackTrigger()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(_player.attackCheckPoint.position, _player.attackCheckDistance);
         foreach(var hit in colliders)
@@ -24,6 +24,10 @@ public class AnimationEvent : MonoBehaviour
                 hit.GetComponent<enemy>().OnDamage();
             }
         }
+    }
+    private void throwSword()
+    {
+        skillManager.instance.swordSkill.throwSword(_player.transform);
     }
     // Update is called once per frame
     void Update()
