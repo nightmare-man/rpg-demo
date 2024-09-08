@@ -28,7 +28,8 @@ public class swordSkill : baseSkill
     public void throwSword(Transform _transform)
     {
         
-        GameObject sword = Instantiate(swordPrefab, _transform.position, _transform.rotation);
+        GameObject sword = Instantiate(swordPrefab);
+        sword.transform.position = _transform.position; 
        
         sword.GetComponent<swordController>().throwSword(finalDir, swordGravityScale);
     }
