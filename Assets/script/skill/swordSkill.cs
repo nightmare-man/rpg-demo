@@ -64,8 +64,7 @@ public class swordSkill : baseSkill
         dots = new GameObject[dotsCount];
         for (int i = 0; i < dotsCount; i++)
         {
-            Debug.Log(dotPrefab == null);
-            Debug.Log(dots == null);
+          
             dots[i] = Instantiate(dotPrefab);
             dots[i].SetActive(false);
             dots[i].transform.parent = dotsParent.transform;
@@ -76,7 +75,7 @@ public class swordSkill : baseSkill
     {
         if (!showDotTip)
             return;
-        Debug.Log("set activate" + activate);
+       
         foreach(var d in dots)
         {
             d.SetActive(activate);

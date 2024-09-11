@@ -538,7 +538,7 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: 0cb8744cdfc630744a8f1908f2074d56, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_MirrorParameter: playerAimSword
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!1101 &1105121185462911042

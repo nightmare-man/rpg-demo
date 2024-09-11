@@ -10,8 +10,9 @@ public class AnimationEvent : MonoBehaviour
         _player = GetComponentInParent<player>();
     }
 
-    private void animatorTrigger()
+    public void animatorTrigger()
     {
+        Debug.Log("trigger execute");
         _player.AnimationTrigger();
     }
     private void attackTrigger()

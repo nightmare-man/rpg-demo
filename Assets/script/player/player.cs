@@ -83,6 +83,8 @@ public class player : entity
     }
     public void clearSword()
     {
+        Debug.Log("change to catch");
+        stateMachine.changeState(playerCatchSword);
         Destroy(sword);
     }
     private void dashInputCheck()

@@ -52,7 +52,7 @@ public class playerStateGround : playerState
     {
         if (!_player.sword)
             return true;
-        Debug.Log("11");
+      
         _player.sword.GetComponent<swordController>().returnSword();
         return false;
     }

@@ -11,6 +11,11 @@ public class playerStateCatchSword : playerState
     public override void enter()
     {
         base.enter();
+        Transform sword = _player.sword.transform;
+        if (sword.position.x > _player.transform.position.x && !_player.faceRight)
+            _player.flip();
+        else if (sword.position.x < _player.transform.position.x && _player.faceRight)
+            _player.flip();
     }
 
     public override void exit()
@@ -21,5 +26,9 @@ public class playerStateCatchSword : playerState
     public override void update()
     {
         base.update();
+        if ( trigger)
+        {
+            _stateMachine.changeState(_player.playerIdle);
+        }
     }
 }
