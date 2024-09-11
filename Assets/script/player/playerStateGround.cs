@@ -36,7 +36,9 @@ public class playerStateGround : playerState
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            _stateMachine.changeState(_player.playerAimSword);
+          
+            if(hasNoSword())
+                _stateMachine.changeState(_player.playerAimSword);
         }
         //明明已经确定了只能在ground state时检测跳跃，为什么还需要加一个isGrounded的碰撞检测？
         //因为有时候任务站在道具上，或者跳到了敌人头上，这个时候，也是groundstate，但是明显不在地面上，不让跳
@@ -45,5 +47,13 @@ public class playerStateGround : playerState
             _stateMachine.changeState(_player.playerJump);
         }
         
+    }
+    private bool hasNoSword()
+    {
+        if (!_player.sword)
+            return true;
+        Debug.Log("11");
+        _player.sword.GetComponent<swordController>().returnSword();
+        return false;
     }
 }

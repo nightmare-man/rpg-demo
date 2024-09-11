@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class swordSkill : baseSkill
@@ -17,7 +18,7 @@ public class swordSkill : baseSkill
     [SerializeField] private float dotTimeInterval;
     private GameObject[] dots;
     private GameObject dotsParent;
-
+   
     protected override void Start()
     {
         base.Start();
@@ -30,9 +31,10 @@ public class swordSkill : baseSkill
         
         GameObject sword = Instantiate(swordPrefab);
         sword.transform.position = _transform.position; 
-       
         sword.GetComponent<swordController>().throwSword(finalDir, swordGravityScale);
+       
     }
+   
     private void Update()
     {
         Vector2 aimDir= AimDirection().normalized;

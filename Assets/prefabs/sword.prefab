@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4178445633657270847}
   - component: {fileID: 7955052802907591532}
   - component: {fileID: 6321113425213657037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -2141175823
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Sprite: {fileID: 1633007794, guid: f6b296ee51c42564abe9c05f1c502ecd, type: 3}
+  m_Sprite: {fileID: 119750562, guid: f6b296ee51c42564abe9c05f1c502ecd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,9 +116,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2789809707533563246}
   - component: {fileID: 3261113974374280266}
-  - component: {fileID: 3381596004459081300}
   - component: {fileID: 9042336235813893983}
-  m_Layer: 0
+  - component: {fileID: 75941190360754856}
+  m_Layer: 8
   m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &3381596004459081300
+--- !u!114 &9042336235813893983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276758371042953733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895f457199ce0c1478d5748d696dc429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  returnSpeed: 10
+--- !u!58 &75941190360754856
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,21 +210,9 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016683102, y: 0}
+  m_Offset: {x: 0.10442543, y: -0.05379486}
   serializedVersion: 2
-  m_Radius: 0.73306847
---- !u!114 &9042336235813893983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7276758371042953733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 895f457199ce0c1478d5748d696dc429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 0.80378246

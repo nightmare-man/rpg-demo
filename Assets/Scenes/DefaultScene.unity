@@ -3454,8 +3454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   swordPrefab: {fileID: 7276758371042953733, guid: 2ae9689eb80c08549ac5652316075eca, type: 3}
-  launchDir: {x: 15, y: 15}
-  swordGravityScale: 1
+  launchDir: {x: 35, y: 35}
+  swordGravityScale: 10
   showDotTip: 1
   dotPrefab: {fileID: 1004775229949802038, guid: 48221ee174a1f074a9b4c1058d9d80f3, type: 3}
   dotsCount: 30

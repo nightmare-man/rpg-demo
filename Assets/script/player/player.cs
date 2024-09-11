@@ -25,7 +25,7 @@ public class player : entity
 
     [Header("counter attack info")]
     public float counterAttackDuration = 0.2f;
-
+    public GameObject sword;
     #region states
     public playerStateMachine stateMachine { get; private set; }
     public playerStateIdle playerIdle { get; private set; }
@@ -43,6 +43,7 @@ public class player : entity
 
     
 
+    
     protected override void Awake()
     {
         base.Awake();
@@ -76,7 +77,14 @@ public class player : entity
         dashInputCheck();
 
     }
-
+    public void assignSword(GameObject _sword)
+    {
+        sword = _sword;
+    }
+    public void clearSword()
+    {
+        Destroy(sword);
+    }
     private void dashInputCheck()
     {
         if (isWallDetected())
