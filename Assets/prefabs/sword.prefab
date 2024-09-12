@@ -180,7 +180,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895f457199ce0c1478d5748d696dc429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnSpeed: 10
+  returnSpeed: 18
+  isBouncing: 1
+  bouncingSpeed: 20
+  bouncingCount: 20
+  targets: []
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!58 &75941190360754856
 CircleCollider2D:
   m_ObjectHideFlags: 0

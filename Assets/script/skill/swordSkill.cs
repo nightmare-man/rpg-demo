@@ -3,12 +3,29 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+public enum swordType
+{
+    regualr,
+    bouncing,
+    pierce,
+    spin
+}
 public class swordSkill : baseSkill
 {
+    [Header("sword type")]
+    [SerializeField] private swordType swordType;
+
+    [Header("bouncing info")]
+    [SerializeField] private float bouncingSpeed;
+    [SerializeField] private int bouncingAmount;
+    [SerializeField] LayerMask enemyLayer;
+
     [Header("throw info")]
     [SerializeField] private GameObject swordPrefab;
     [SerializeField] private Vector2 launchDir;//这个是预设被扔出去的速度向量
     [SerializeField] private float swordGravityScale;
+    [SerializeField] private float returnSpeed;
     private Vector2 finalDir;//经过鼠标选择的方向后缩放launchDir得到的。
 
     [Header("tip dot info")]
@@ -16,6 +33,9 @@ public class swordSkill : baseSkill
     [SerializeField] private GameObject dotPrefab;
     [SerializeField] private int dotsCount;
     [SerializeField] private float dotTimeInterval;
+
+    [Header("catch info")]
+    public float hitBackVelocity;       
     private GameObject[] dots;
     private GameObject dotsParent;
    
@@ -30,17 +50,23 @@ public class swordSkill : baseSkill
     {
         
         GameObject sword = Instantiate(swordPrefab);
-        sword.transform.position = _transform.position; 
-        sword.GetComponent<swordController>().throwSword(finalDir, swordGravityScale);
+        sword.transform.position = _transform.position;
+        if (swordType == swordType.bouncing)
+        {
+            sword.GetComponent<swordController>().setBouncing(true,bouncingAmount, bouncingSpeed,enemyLayer);
+        }
+        sword.GetComponent<swordController>().throwSword(finalDir, swordGravityScale,returnSpeed);
        
     }
    
     private void Update()
     {
         Vector2 aimDir= AimDirection().normalized;
+        //计算加权方向
         finalDir = new Vector2(aimDir.x * launchDir.x, aimDir.y * launchDir.y);
     }
-    //计算加权方向
+
+    #region aim region
     private Vector2 AimDirection()
     {
         Vector2 playerPosition = player.transform.position;
@@ -53,7 +79,7 @@ public class swordSkill : baseSkill
         return ret;
     }
 
-    #region tip dot function
+   
     private void createDots()
     {
         if (!showDotTip)

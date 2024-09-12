@@ -12,7 +12,7 @@ public class AnimationEvent : MonoBehaviour
 
     public void animatorTrigger()
     {
-        Debug.Log("trigger execute");
+      
         _player.AnimationTrigger();
     }
     private void attackTrigger()

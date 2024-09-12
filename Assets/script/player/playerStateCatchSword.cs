@@ -16,6 +16,8 @@ public class playerStateCatchSword : playerState
             _player.flip();
         else if (sword.position.x < _player.transform.position.x && _player.faceRight)
             _player.flip();
+        _player.rb.velocity = new Vector2(skillManager.instance.swordSkill.hitBackVelocity * -_player.faceDir, _player.rb.velocity.y);
+        _player.StartCoroutine("busyFor", 0.1f);
     }
 
     public override void exit()

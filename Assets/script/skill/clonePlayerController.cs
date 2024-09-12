@@ -7,29 +7,26 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class clonePlayerController : MonoBehaviour
 {
-    [SerializeField] private float duration = 1.0f;
-    [SerializeField] private float colorMinusSpeed = 1.0f;
+    [SerializeField] private float duration = 2.0f;
+    [SerializeField] private float colorMinusSpeed = 0.2f;
     [SerializeField] private Transform attackCheck;
     [SerializeField] private float attackRadius;
     private SpriteRenderer sr;
     private Animator anim;
     private float timer;
-    private Transform clonePlayer;
+    private Transform parent;
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         timer = duration;
-        clonePlayer = transform.parent;
+        parent = transform.parent;
     }
     public void setup(Transform _transform, bool canAttack)
     {
-        Debug.Log(_transform.position);
         gameObject.transform.position = _transform.position;
         if (canAttack)
         {
-
-
             anim.SetInteger("attackNumber", UnityEngine.Random.Range(0, 3));
             faceEnemy();
         }
@@ -43,13 +40,11 @@ public class clonePlayerController : MonoBehaviour
     {
        
         timer -= Time.deltaTime;
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - colorMinusSpeed * Time.deltaTime);
+        
         if (timer < 0)
         {
-            sr.color = new Color(sr.color.r,sr.color.g,sr.color.b,sr.color.a-colorMinusSpeed);
-            if (sr.color.a < 0)
-            {
-                Destroy(gameObject.transform.parent.gameObject);
-            }
+            Destroy(parent.gameObject);
         }
     }
 
@@ -60,7 +55,7 @@ public class clonePlayerController : MonoBehaviour
     }
     public void attackTrigger()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(attackCheck.position,attackRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius);
         foreach (var hit in colliders)
         {
             if (hit.GetComponent<enemy>() != null)
@@ -76,21 +71,21 @@ public class clonePlayerController : MonoBehaviour
     }
     private  bool faceRight()
     {
-        if (attackCheck.position.x > clonePlayer.position.x)
+        if (attackCheck.position.x > parent.position.x)
             return true;
         return false;
     }
-    private void flip() => clonePlayer.Rotate(0, 180, 0);
+    private void flip() => parent.Rotate(0, 180, 0);
     private void faceEnemy()
     {
         float nearestDistance = float.MaxValue;
         Transform nearestEnemy = null;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(clonePlayer.position, 25);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(parent.position, 25);
         foreach (var hit in colliders) 
         {
             if (hit.GetComponent<enemy>() != null)
             {
-                float distance = Vector2.Distance(clonePlayer.position, hit.gameObject.transform.position);
+                float distance = Vector2.Distance(parent.position, hit.gameObject.transform.position);
                 if (distance < nearestDistance)
                 {
                     nearestDistance = distance;
@@ -102,12 +97,12 @@ public class clonePlayerController : MonoBehaviour
         {
             if (faceRight())
             {
-                if (nearestEnemy.position.x < clonePlayer.position.x)
+                if (nearestEnemy.position.x < parent.position.x)
                     flip();
             }
             else
             {
-                if (nearestEnemy.position.x > clonePlayer.position.x)
+                if (nearestEnemy.position.x > parent.position.x)
                     flip();
             }
         }

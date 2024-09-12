@@ -24,6 +24,7 @@ public class entity : MonoBehaviour
     [SerializeField] private Vector2 knockBackDirection;
     [SerializeField] private float knockDuration;
     private bool knocked;
+    private Vector2 originVelocity;
     #endregion
 
     #region components
@@ -47,6 +48,24 @@ public class entity : MonoBehaviour
     {
 
     }
+    private void enterFreeze()
+    {
+        anim.speed = 0;
+        originVelocity = rb.velocity;
+        rb.velocity = new Vector2(0, 0);
+    }
+    private void exitFreeze()
+    {
+        anim.speed = 1.0f;
+        rb.velocity = originVelocity;
+    } 
+    public IEnumerator freezeTime(float duration)
+    {
+        enterFreeze();
+        yield return new WaitForSeconds(duration);
+        exitFreeze();
+    }
+
     public virtual void flipController(float _x)
     {
         if (_x > 0.001 && !faceRight)
