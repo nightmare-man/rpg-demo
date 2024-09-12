@@ -48,16 +48,18 @@ public class entity : MonoBehaviour
     {
 
     }
-    private void enterFreeze()
+    public void enterFreeze()
     {
         anim.speed = 0;
         originVelocity = rb.velocity;
         rb.velocity = new Vector2(0, 0);
+        knocked = true;
     }
-    private void exitFreeze()
+    public void exitFreeze()
     {
         anim.speed = 1.0f;
         rb.velocity = originVelocity;
+        knocked = false;
     } 
     public IEnumerator freezeTime(float duration)
     {
