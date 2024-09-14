@@ -22,15 +22,16 @@ public class playerStateAimSword : playerState
 
     public override void update()
     {
-        float mouseX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+       
         base.update();
-        skillManager.instance.swordSkill.setDotsPostion();
+        
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             _stateMachine.changeState(_player.playerIdle);
         }
-      
-        if(mouseX>_player.transform.position.x && !_player.faceRight)
+
+        float mouseX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        if (mouseX>_player.transform.position.x && !_player.faceRight)
         {
             _player.flip();
         }else if (mouseX < _player.transform.position.x && _player.faceRight)

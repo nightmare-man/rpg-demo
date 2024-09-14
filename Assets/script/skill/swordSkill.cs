@@ -20,11 +20,12 @@ public class swordSkill : baseSkill
     [SerializeField] private float bouncingSpeed;
     [SerializeField] private int bouncingAmount;
     [SerializeField] LayerMask enemyLayer;
+    [SerializeField] private float bouneGravity;
 
     [Header("throw info")]
     [SerializeField] private GameObject swordPrefab;
     [SerializeField] private Vector2 launchDir;//这个是预设被扔出去的速度向量
-    [SerializeField] private float swordGravityScale;
+    [SerializeField] private float normalGravity;
     [SerializeField] private float returnSpeed;
     private Vector2 finalDir;//经过鼠标选择的方向后缩放launchDir得到的。
 
@@ -51,19 +52,26 @@ public class swordSkill : baseSkill
         
         GameObject sword = Instantiate(swordPrefab);
         sword.transform.position = _transform.position;
-        if (swordType == swordType.bouncing)
+        switch (swordType)
         {
-            sword.GetComponent<swordController>().setBouncing(true,bouncingAmount, bouncingSpeed,enemyLayer);
+            case swordType.bouncing:
+                sword.GetComponent<swordController>().setBouncing(true, bouncingAmount, bouncingSpeed, enemyLayer);
+                normalGravity = bouneGravity;
+                break;
+            default:
+                break;
         }
-        sword.GetComponent<swordController>().throwSword(finalDir, swordGravityScale,returnSpeed);
+        sword.GetComponent<swordController>().throwSword(finalDir, normalGravity,returnSpeed);
        
     }
    
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         Vector2 aimDir= AimDirection().normalized;
         //计算加权方向
         finalDir = new Vector2(aimDir.x * launchDir.x, aimDir.y * launchDir.y);
+        setDotsPostion();
     }
 
     #region aim region
@@ -110,7 +118,7 @@ public class swordSkill : baseSkill
     private void setDotPosition(Transform dot,float t)
     {
         Vector2 startPos = player.transform.position;
-        Vector2 movePos = new Vector2(finalDir.x * t, finalDir.y * t + 0.5f * Physics2D.gravity.y * swordGravityScale*t*t);
+        Vector2 movePos = new Vector2(finalDir.x * t, finalDir.y * t + 0.5f * Physics2D.gravity.y * normalGravity*t*t);
         dot.position = startPos + movePos;
     }
     public void setDotsPostion()

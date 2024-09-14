@@ -59,14 +59,18 @@ public class swordController : MonoBehaviour
     {
         if (canRotate)
             transform.right = rb.velocity;
-        returnLogic();
-        bouncingLogic();
+        if (isReturningSword)
+        {
+            returnLogic();
+        }else if (isBouncing)
+        {
+            bouncingLogic();
+        }
     }
 
     private void returnLogic()
     {
-        if (isReturningSword)
-        {
+        
             transform.position = Vector2.MoveTowards(transform.position, playerManager.instance.player.transform.position, returnSpeed * Time.deltaTime);
             if (Vector2.Distance(transform.position, playerManager.instance.player.transform.position) < 1.0f)
             {
@@ -74,14 +78,13 @@ public class swordController : MonoBehaviour
                 playerManager.instance.player.clearSword();//剑被摧毁了，也不用担心isReturningSword没有被重置成false了
 
             }
-        }
+        
     }
 
     private void bouncingLogic()
     {
-        if (isReturningSword)
-            return;
-        if (isBouncing && targets.Count > 0)
+       
+        if (targets.Count > 0)
         {
             if (bouncingAmount == 0)
             {
